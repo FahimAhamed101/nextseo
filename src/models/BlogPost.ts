@@ -1,9 +1,7 @@
-export interface BlogPost {
-    id: number;
+export type BlogPost = {
+  
+   
+     id: number;
     title: string;
-    body: string;
   }
   
-  export interface BlogPostsResponse {
-    posts: BlogPost[];
-  }
