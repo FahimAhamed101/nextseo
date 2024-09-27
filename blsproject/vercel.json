@@ -1,0 +1,26 @@
+{
+    "builds": [
+      {
+        "src": "carshop/wsgi.py",
+        "use": "@vercel/python",
+        "config":{ "runtime": "python3.12",
+        "maxLambdaSize": "15mb"}
+      },
+      {
+        "src": "bash now_build_staticfiles.sh",
+        "use": "@now/static-build",
+        "config": {
+          "distDir": "static"
+        }
+      }
+    ],
+    "routes": [
+     
+      {
+        "src": "/(.*)",
+        "dest": "carshop/wsgi.py"
+      }
+    ]
+  
+  
+}
