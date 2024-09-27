@@ -15,13 +15,15 @@ console.log(posts)
   return (
     <div className="max-w-prose m-auto space-y-5">
       <h1 className="text-3xl text-center mb-3 font-bold">Posts</h1>
-      {posts.map(({ id , title } : BlogPost  ) => (
-        <article key={title}>
+      {posts && data.posts.map(({ id , title,content,subtitle } : BlogPost  ) => (
+        <article key={id}>
           <h2>
             <Link href={`/posts/${id}`} className="text-lg font-bold">
               {title}
+              
             </Link>
-          </h2>
+            {subtitle}
+          </h2>{content}
         </article>
       ))}
     </div>
