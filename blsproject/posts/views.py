@@ -88,16 +88,11 @@ class ListPostsapi(generics.ListAPIView):
         serializer = PostSerializer(tasks , many=True)
         return Response({'posts': serializer.data},status=status.HTTP_200_OK)
 
-class ListDetailsapi(generics.ListAPIView):
+class ListDetailsapi(generics.RetrieveUpdateDestroyAPIView):
     
     queryset = Post.objects.all()
     
     serializer_class = PostSerializer
     
     
-    def get_object(self, *args, **kwargs):
-        pk = self.kwargs.get('pk')
-        instance = Post.objects.get(id=pk)
-        if instance is None:
-            raise Http404("tasks not exists")
-        return instance
+    
