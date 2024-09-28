@@ -3,7 +3,7 @@ import { delay } from "@/lib/utils";
 import { BlogPost } from "@/models/BlogPost";
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { cache } from "react";
+
 import Image from 'next/image'
 interface BlogPostPageProps {
   params: { postId: string };
