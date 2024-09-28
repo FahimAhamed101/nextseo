@@ -16,7 +16,7 @@ console.log(posts)
 
   return [
     {
-      url: `${process.env.NEXT_PUBLIC_BASE_URL}/about`,
+      url: `https://nextseo.vercel.app/about`,
       lastModified: new Date(),
     },
     ...postEntries,
