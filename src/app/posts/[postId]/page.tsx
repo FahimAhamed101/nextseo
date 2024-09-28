@@ -15,7 +15,7 @@ export async function generateStaticParams() {
   console.log(data.posts)
   const  posts  = data;
 
-  return data.posts.map(({ id  } : BlogPost ) => id);
+  return posts.map(({ id  } : BlogPost ) => id);
 }
 
 // Manually deduplicate requests if not using fetch
@@ -28,11 +28,11 @@ export async function generateMetadata({
   params: { postId },
 }: BlogPostPageProps): Promise<Metadata> {
   const response = await fetch(`https://nextbackend-virid.vercel.app/post/api/${postId}`);
-  const post : BlogPost = await response.json();
+  const posts : BlogPost = await response.json();
 
   return {
-    title: post.title,
-    description: post.content,
+    title: posts.title,
+    description: posts.content,
     // openGraph: {
     //   images: [
     //     {
