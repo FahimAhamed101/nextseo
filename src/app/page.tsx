@@ -1,9 +1,12 @@
 import { delay } from "@/lib/utils";
 import { BlogPost } from "@/models/BlogPost";
 import Link from "next/link";
-
+import Image from 'next/image'
+import ImageFilter from "./components/ImageFilter"
 export default async function BlogPage() {
-  const response = await fetch("http://127.0.0.1:8000/post/api/");
+  
+
+  const response = await fetch('https://nextbackend-virid.vercel.app/post/api/' );
   
   const data = await response.json();
   console.log(data.posts)
@@ -13,11 +16,21 @@ console.log(posts)
  
 
   return (
-    <div className="max-w-prose m-auto space-y-5">
-      <h1 className="text-3xl text-center mb-3 font-bold">Posts</h1>
-      {posts && data.posts.map(({ id , title,content,subtitle } : BlogPost  ) => (
+   
+    <div className="w-full min-h-screen">
+   
+   <ImageFilter />
+
+    {posts && posts.map(({ id , title,content,subtitle,image } : BlogPost  ) => (
         <article key={id}>
+             <Image
+      src={image}
+      width={500}
+      height={500}
+      alt="Picture of the author"
+    />
           <h2>
+
             <Link href={`/posts/${id}`} className="text-lg font-bold">
               {title}
               
@@ -26,6 +39,13 @@ console.log(posts)
           </h2>{content}
         </article>
       ))}
-    </div>
+
+
+  </div>
+
+
+
+
+
   );
 }

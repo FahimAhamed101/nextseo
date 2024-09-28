@@ -76,6 +76,8 @@ class ListPostsapi(generics.ListAPIView):
     
     
     
+    
+    
 
 class ListDetailsapi(generics.RetrieveUpdateDestroyAPIView):
     

@@ -10,7 +10,7 @@ interface BlogPostPageProps {
 }
 
 export async function generateStaticParams() {
-  const response = await fetch("http://127.0.0.1:8000/post/api/");
+  const response = await fetch("https://nextbackend-virid.vercel.app/post/api/");
   const data = await response.json();
   console.log(data.posts)
   const  posts  = data;
@@ -27,12 +27,12 @@ export async function generateStaticParams() {
 export async function generateMetadata({
   params: { postId },
 }: BlogPostPageProps): Promise<Metadata> {
-  const response = await fetch(`http://127.0.0.1:8000/post/api/${postId}`);
+  const response = await fetch(`https://nextbackend-virid.vercel.app/post/api/${postId}`);
   const post : BlogPost = await response.json();
 
   return {
     title: post.title,
-    description: post.body,
+    description: post.content,
     // openGraph: {
     //   images: [
     //     {
@@ -46,7 +46,7 @@ export async function generateMetadata({
 export default async function BlogPostPage({
   params: { postId },
 }: BlogPostPageProps) {
-  const response = await fetch(`http://127.0.0.1:8000/post/api/${postId}`);
+  const response = await fetch(`https://nextbackend-virid.vercel.app/post/api/${postId}`);
   const { title, image,content }: BlogPost = await response.json();
 
   if (response.status === 404) {
